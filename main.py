@@ -1,14 +1,24 @@
+#set global variables for the book we are working with.
 FILENAME = "books/frankenstein.txt"
 
-#create a main function to read the book
+def get_book_text(path):
+    #get the text from the book
+    with open(path, "r") as f:
+        return f.read()
+
+def count_words(text):
+    #count the words in the text
+    return len(text.split())
+
 def main():
-    #read the book
-    with open(FILENAME) as f:
-        file_contents = f.read()
-    #print the book
-    #print(file_contents)
-    #print the word count of the book
-    print(len(file_contents.split()))
+    #get the text from the book through a function
+    text = get_book_text(FILENAME)
+    #count the words in the text through a function
+    num_words = count_words(text)
+    #print the results
+    print(f"There are {num_words} words in {FILENAME}")
+
+
 
 #call the main function
 if __name__ == "__main__":
