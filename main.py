@@ -27,6 +27,22 @@ def character_count(text):
     #return the dictionary. 
     return char_dict
 
+#STILL NEED TO TEST
+#creat function to take the char_dict from the character_count function and sort it. 
+def unsort_dict(dict):
+    #set the empty list to append too. 
+    result = []
+    #use a for loop to loop through each item in the dict
+    for char, count in dict.items():
+        #append the mini dictionary to the list. 
+        result.append({"char": char, "num": count})
+    return result
+
+#STILL NEED TO TEST
+#used for the .sort to sort for the most numerous characters in the book. 
+def sort_key(dict):
+    return dict["num"]
+
 def main():
     #get the text from the book through a function
     text = get_book_text(FILENAME)
@@ -34,10 +50,15 @@ def main():
     num_words = count_words(text)
     #count of each character
     count_char = character_count(text)
+    #unsort the count_char dictionary
+    unsorted_count_char = unsort_dict(count_char)
+    #sort unsorted dict. 
+    sorted_count_char = unsorted_count_char.sort(reverse=True, key=sort_key)
     #print the results
     print(f"There are {num_words} words in {FILENAME}")
-    #print the dictionary that contains all char counts. 
-    print(count_char)
+    #print an format the dictionary that contains all char counts. 
+    print(f"The {sorted_count_char["char"]} was found {sorted_count_char["num"]}")
+    
 
 
 #call the main function
