@@ -10,7 +10,7 @@ def count_words(text):
     #count the words in the text
     return len(text.split())
 
-#STILL NEED TO TEST
+
 def character_count(text):
     #set the initial dictionary for the alphabet
     char_dict = {}
@@ -27,7 +27,7 @@ def character_count(text):
     #return the dictionary. 
     return char_dict
 
-#STILL NEED TO TEST
+
 #creat function to take the char_dict from the character_count function and sort it. 
 def unsort_dict(dict):
     #set the empty list to append too. 
@@ -38,7 +38,7 @@ def unsort_dict(dict):
         result.append({"char": char, "num": count})
     return result
 
-#STILL NEED TO TEST
+
 #used for the .sort to sort for the most numerous characters in the book. 
 def sort_key(dict):
     return dict["num"]
@@ -53,12 +53,16 @@ def main():
     #unsort the count_char dictionary
     unsorted_count_char = unsort_dict(count_char)
     #sort unsorted dict. 
-    sorted_count_char = unsorted_count_char.sort(reverse=True, key=sort_key)
+    unsorted_count_char.sort(reverse=True, key=sort_key)
     #print the results
     print(f"There are {num_words} words in {FILENAME}")
     #print an format the dictionary that contains all char counts. 
-    print(f"The {sorted_count_char["char"]} was found {sorted_count_char["num"]}")
+    for num in range(len(unsorted_count_char)):
+        print(f"The {unsorted_count_char[num]['char']} was found {unsorted_count_char[num]['num']} times")
     
+    #print end report.
+    print("--- End of Report ---")
+        
 
 
 #call the main function
